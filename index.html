@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>লাভ টেস্ট – কে কাকে কতটা ভালোবাসে?</title>
+<title>Love Test | লাভ টেস্ট</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Tiro+Bangla&display=swap" rel="stylesheet">
 <style>
@@ -24,11 +24,13 @@ button,input,select{font:inherit;color:inherit}
 .sbtn.fb{background:#1877f2;border-color:#1877f2;color:#fff}
 .sbtn.demo{border-style:dashed;opacity:.8}
 .note{font-size:.85rem;margin-top:16px;opacity:.65}
-header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5}
-header.top b{font-family:"Tiro Bangla",serif;font-size:1.3rem;font-weight:400}
-.who{display:flex;align-items:center;gap:10px;font-size:.95rem}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:5}
+header.top b{font-family:"Tiro Bangla",serif;font-size:1.25rem;font-weight:400}
+.who{display:flex;align-items:center;gap:8px;font-size:.9rem}
 .who img{width:30px;height:30px;border-radius:50%;object-fit:cover}
 .lnk{background:none;border:0;color:var(--rose);cursor:pointer;font-weight:600;padding:4px 8px}
+.langbtn{border:1.5px solid var(--plum);background:#fff;border-radius:999px;padding:4px 12px;cursor:pointer;font-weight:600;font-size:.85rem}
+.card .langbtn{margin-bottom:14px}
 main{max-width:1000px;margin:0 auto;padding:28px 16px 70px}
 .hero{text-align:center;margin-bottom:28px}
 .hero h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.2}
@@ -45,8 +47,11 @@ main{max-width:1000px;margin:0 auto;padding:28px 16px 70px}
 .fin{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .pbtn{padding:7px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);cursor:pointer;font-size:.9rem}
 .fld{margin-bottom:14px}
-.fld>label,.lab{display:block;font-weight:600;font-size:.95rem;margin-bottom:6px}
+.fld>label{display:block;font-weight:600;font-size:.95rem;margin-bottom:6px}
+.fld .hint{font-weight:400;font-size:.82rem;opacity:.65}
 .txt,select{width:100%;padding:11px 12px;border-radius:12px;border:1.5px solid var(--line);background:#fff}
+.dob{display:grid;grid-template-columns:1fr 1.3fr 1.1fr;gap:6px}
+.agebox{margin-top:8px;font-size:.9rem;opacity:.8}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
 .chip{padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:.92rem}
 .chip.on{background:var(--plum);border-color:var(--plum);color:#fff}
@@ -64,157 +69,296 @@ main{max-width:1000px;margin:0 auto;padding:28px 16px 70px}
 .row .tx small{display:block;opacity:.65}
 .row strong{font-family:"Tiro Bangla",serif;font-size:1.5rem;color:var(--rose);font-weight:400}
 .empty{text-align:center;opacity:.6;padding:18px}
-.overlay{position:fixed;inset:0;background:rgba(43,16,48,.78);display:grid;place-items:center;padding:16px;z-index:20;overflow:auto}
-.res{background:var(--paper);border-radius:30px;padding:28px 20px;max-width:440px;width:100%;text-align:center}
+.overlay{position:fixed;inset:0;background:rgba(43,16,48,.78);display:grid;place-items:start center;padding:16px;z-index:20;overflow:auto}
+.res{background:var(--paper);border-radius:30px;padding:26px 18px;max-width:440px;width:100%;text-align:center;margin:auto}
 .duo{display:flex;align-items:center;justify-content:center;gap:14px}
 .duo .avatar{width:84px;height:84px;margin:0;font-size:2rem}
 .ring{--p:0;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--rose) calc(var(--p)*1%),#f3d6dc 0)}
 .ring div{width:118px;height:118px;border-radius:50%;background:var(--paper);display:grid;place-items:center;font-family:"Tiro Bangla",serif;font-size:2.4rem}
-.res h3{font-size:1.3rem;margin:16px 0 6px}
-.res p{margin:0 0 16px}
+.res h3{font-size:1.3rem;margin:16px 0 4px}
+.rtitle{display:inline-block;background:var(--rose);color:#fff;border-radius:999px;padding:4px 16px;margin:6px 0 10px;font-weight:600}
+.res p{margin:0 0 14px}
+.bars{text-align:left;margin:0 0 14px}
+.bar{margin-bottom:8px;font-size:.9rem}
+.bar span{display:flex;justify-content:space-between}
+.bar i{display:block;height:8px;border-radius:99px;background:#f3d6dc;overflow:hidden;margin-top:3px}
+.bar i b{display:block;height:100%;width:0;border-radius:99px;background:var(--rose);transition:width 1.4s ease}
+.tip{background:var(--sun);border-radius:16px;padding:10px 14px;margin-bottom:14px;font-size:.92rem}
 .acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.acts button{padding:11px 22px;border-radius:999px;border:1.5px solid var(--plum);background:#fff;cursor:pointer;font-weight:600}
+.acts button{padding:11px 20px;border-radius:999px;border:1.5px solid var(--plum);background:#fff;cursor:pointer;font-weight:600}
 .acts .p{background:var(--rose);border-color:var(--rose);color:#fff}
-.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--plum);color:#fff;padding:12px 20px;border-radius:14px;z-index:30;max-width:90%;text-align:center}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--plum);color:#fff;padding:12px 20px;border-radius:14px;z-index:40;max-width:90%;text-align:center}
+.petal{position:fixed;top:-30px;z-index:25;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:.7}}
 @media(max-width:760px){.panels{grid-template-columns:1fr}.duo{gap:6px}.ring{width:124px;height:124px}.ring div{width:96px;height:96px;font-size:2rem}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.petal{display:none}.bar i b{transition:none}}
 </style>
 </head>
 <body>
 
-<!-- সাইন-ইন -->
 <section id="login" class="screen" hidden>
   <div class="card">
+    <button class="langbtn" data-lang-toggle></button>
     <div class="big">🌸💗🌼</div>
-    <h1>লাভ টেস্ট</h1>
-    <p>দুজনের মধ্যে ভালোবাসার পার্সেন্ট জেনে নিন। শুরু করতে সাইন ইন করুন।</p>
-    <button class="sbtn" id="gBtn">Google দিয়ে সাইন ইন</button>
-    <button class="sbtn fb" id="fBtn">Facebook দিয়ে সাইন ইন</button>
-    <button class="sbtn demo" id="dBtn">ডেমো হিসেবে চালিয়ে যান</button>
+    <h1 data-t="appName"></h1>
+    <p data-t="loginSub"></p>
+    <button class="sbtn" id="gBtn" data-t="google"></button>
+    <button class="sbtn fb" id="fBtn" data-t="facebook"></button>
+    <button class="sbtn demo" id="dBtn" data-t="demo"></button>
     <div class="note" id="liveNote"></div>
   </div>
 </section>
 
-<!-- মূল অ্যাপ -->
 <div id="app" hidden>
   <header class="top">
-    <b>🌸 লাভ টেস্ট</b>
-    <div class="who"><img id="uPhoto" alt="" hidden><span id="uName"></span><button class="lnk" id="outBtn">সাইন আউট</button></div>
+    <b>🌸 <span data-t="appName"></span></b>
+    <div class="who">
+      <button class="langbtn" data-lang-toggle></button>
+      <img id="uPhoto" alt="" hidden><span id="uName"></span>
+      <button class="lnk" id="outBtn" data-t="signOut"></button>
+    </div>
   </header>
   <main>
     <div class="hero">
-      <h1>কে কাকে কতটা ভালোবাসে?</h1>
-      <p>ছবি যোগ করুন, অপশন বেছে নিন, তারপর টেস্ট বাটনে চাপ দিন।</p>
+      <h1 data-t="heroTitle"></h1>
+      <p data-t="heroSub"></p>
     </div>
     <div class="panels" id="panels"></div>
     <div class="shared" id="shared"></div>
-    <button class="go" id="goBtn">💘 লাভ টেস্ট করুন</button>
+    <button class="go" id="goBtn" data-t="go"></button>
     <section class="hist">
-      <h2>আগের টেস্টগুলো <button class="lnk" id="clrBtn">সব মুছুন</button></h2>
+      <h2><span data-t="history"></span> <button class="lnk" id="clrBtn" data-t="clearAll"></button></h2>
       <div id="hist"></div>
     </section>
   </main>
 </div>
 
-<!-- ফলাফল -->
 <div id="res" class="overlay" hidden>
-  <div class="res">
+  <div class="res" id="resCard">
     <div class="duo">
       <div class="avatar" id="rA"></div>
       <div class="ring" id="ring"><div id="pct">0%</div></div>
       <div class="avatar" id="rB"></div>
     </div>
     <h3 id="rNames"></h3>
+    <div class="rtitle" id="rTitle"></div>
     <p id="rMsg"></p>
+    <div class="bars" id="bars"></div>
+    <div class="tip" id="tip"></div>
     <div class="acts">
-      <button class="p" id="shBtn">শেয়ার করুন</button>
-      <button id="clBtn">বন্ধ করুন</button>
+      <button class="p" id="cardBtn" data-t="saveCard"></button>
+      <button id="shBtn" data-t="share"></button>
+      <button id="clBtn" data-t="close"></button>
     </div>
-    <div class="note">এটি শুধু মজার জন্য, ফলাফল র‍্যান্ডম।</div>
+    <div class="note" data-t="funNote"></div>
   </div>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
-/* ============ Firebase সেটিংস: নিজের কনফিগ এখানে বসান ============ */
+/* ============ Firebase: paste your config here / নিজের কনফিগ এখানে বসান ============ */
 const CFG = {
   apiKey: "YOUR_API_KEY",
   authDomain: "YOUR_PROJECT.firebaseapp.com",
   projectId: "YOUR_PROJECT",
   appId: "YOUR_APP_ID"
 };
-/* ================================================================== */
+/* ======================================================================== */
 
 const LIVE = !CFG.apiKey.startsWith("YOUR");
 const $ = s => document.querySelector(s);
-const bn = n => String(n).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]);
-let user = null, auth = null;
+const $$ = s => document.querySelectorAll(s);
+let lang = localStorage.getItem("lt_lang") || "bn";
+const num = n => lang === "bn" ? String(n).replace(/\d/g, d => "০১২৩৪৫৬৭৮৯"[d]) : String(n);
+let user = null, auth = null, last = null;
 const S = { a: {}, b: {}, x: {} };
-let last = null;
+const LOVE_MIN = 3, LOVE_MAX = 5;
 
-const FIELDS = [
-  { k: "age", label: "বয়স", type: "age" },
-  { k: "blood", label: "রক্তের গ্রুপ", chips: ["A+", "A−", "B+", "B−", "O+", "O−", "AB+", "AB−"] },
-  { k: "work", label: "বর্তমানে কী করছেন", chips: ["স্টুডেন্ট", "চাকরিজীবী", "ব্যবসায়ী", "গৃহিণী", "অন্যান্য"] },
-  { k: "lang", label: "ভালোবাসা প্রকাশের ধরন", chips: ["সময় দেওয়া", "উপহার", "মিষ্টি কথা", "যত্ন নেওয়া"] }
-];
-const SHARED = [
-  { k: "rel", label: "দুজনের সম্পর্ক", chips: ["বয়ফ্রেন্ড–গার্লফ্রেন্ড", "স্বামী–স্ত্রী", "বাবা", "মা", "ভাই", "বোন", "ছেলে", "মেয়ে", "বন্ধু", "অন্যান্য"] },
-  { k: "dur", label: "কতদিনের পরিচয়", chips: ["১ মাসের কম", "১–৬ মাস", "৬ মাস–১ বছর", "১–৩ বছর", "৩ বছরের বেশি", "জন্ম থেকে"] },
-  { k: "freq", label: "কত ঘনঘন দেখা বা কথা হয়", chips: ["প্রতিদিন", "সপ্তাহে কয়েকবার", "মাসে কয়েকবার", "খুব কম"] }
-];
+/* ---------------- UI text ---------------- */
+const T = {
+  bn: {
+    appName: "লাভ টেস্ট", loginSub: "দুজনের মধ্যে ভালোবাসার পার্সেন্ট জেনে নিন। শুরু করতে সাইন ইন করুন।",
+    google: "Google দিয়ে সাইন ইন", facebook: "Facebook দিয়ে সাইন ইন", demo: "ডেমো হিসেবে চালিয়ে যান",
+    signOut: "সাইন আউট", heroTitle: "কে কাকে কতটা ভালোবাসে? 💘", heroSub: "ছবি যোগ করুন, অপশন বেছে নিন, তারপর টেস্ট বাটনে চাপ দিন।",
+    go: "💘 লাভ টেস্ট করুন", history: "আগের টেস্টগুলো", clearAll: "সব মুছুন", saveCard: "🖼️ কার্ড সেভ করুন", share: "শেয়ার করুন", close: "বন্ধ করুন",
+    funNote: "এটি শুধু মজার জন্য, ফলাফল র‍্যান্ডম।", me: "আমি (Me) 🌸", partner: "আমার পার্টনার 🌼", gallery: "🖼️ গ্যালারি", camera: "📷 ক্যামেরা",
+    yourName: "আপনার নাম", partnerName: "পার্টনারের নাম", namePh: "নাম লিখুন", dob: "জন্মতারিখ 🎂", day: "দিন", month: "মাস", year: "সাল",
+    age: "বয়স", ageOr: "(জন্মতারিখ দিলে নিজে নিজে বসবে)", ageSel: "বয়স বেছে নিন", yrs: "বছর", ageIs: "বয়স",
+    blood: "রক্তের গ্রুপ 🩸", work: "বর্তমানে কী করছেন", loveLang: "ভালোবাসা প্রকাশের ধরন 💞", loveHint: "৩ থেকে ৫টা বেছে নিন",
+    sharedTitle: "দুজনের কথা", rel: "দুজনের সম্পর্ক", dur: "কতদিনের পরিচয়", freq: "কতক্ষণ পর পর দেখা বা কথা হয়",
+    needNames: "দুজনেরই নাম দিন।", needRel: "দুজনের সম্পর্ক বেছে নিন।", needLove: "ভালোবাসা প্রকাশের ধরন কমপক্ষে ৩টা বেছে নিন (দুজনের জন্যই)।",
+    maxLove: "সর্বোচ্চ ৫টা বাছা যাবে।", noHist: "এখনো কোনো টেস্ট করা হয়নি।", confirmClear: "সব রেকর্ড মুছে ফেলবেন?",
+    copied: "কপি হয়েছে!", liveNote: "ডেমো মোড: Google/Facebook চালু করতে index.html এর Firebase কনফিগ বসান।", needFb: "আগে Firebase কনফিগ বসান, অথবা ডেমো ব্যবহার করুন।",
+    signFail: "সাইন ইন হয়নি: ", guest: "অতিথি", friend: "বন্ধু", langBtn: "English", ageDiff: "বয়সের পার্থক্য", sign: "রাশি", tipHead: "💡 লাভ টিপস: ",
+    cardSaved: "কার্ড সেভ হয়েছে!", shareTxt: (a,b,p)=>`${a} ❤ ${b}: আমাদের ভালোবাসার পরিমাণ ${p}%! 💘`
+  },
+  en: {
+    appName: "Love Test", loginSub: "Find out the love percentage between two people. Sign in to start.",
+    google: "Sign in with Google", facebook: "Sign in with Facebook", demo: "Continue as demo",
+    signOut: "Sign out", heroTitle: "Who loves whom, and how much? 💘", heroSub: "Add photos, pick your options, then press the test button.",
+    go: "💘 Take the love test", history: "Past tests", clearAll: "Clear all", saveCard: "🖼️ Save card", share: "Share", close: "Close",
+    funNote: "Just for fun, the result is random.", me: "Me 🌸", partner: "My partner 🌼", gallery: "🖼️ Gallery", camera: "📷 Camera",
+    yourName: "Your name", partnerName: "Partner's name", namePh: "Type a name", dob: "Date of birth 🎂", day: "Day", month: "Month", year: "Year",
+    age: "Age", ageOr: "(fills in from date of birth)", ageSel: "Select age", yrs: "years", ageIs: "Age",
+    blood: "Blood group 🩸", work: "What are you doing now", loveLang: "Ways you show love 💞", loveHint: "Pick 3 to 5",
+    sharedTitle: "About the two of you", rel: "Your relationship", dur: "How long you have known each other", freq: "How often you meet or talk",
+    needNames: "Please enter both names.", needRel: "Please choose your relationship.", needLove: "Pick at least 3 ways of showing love (for both people).",
+    maxLove: "You can pick 5 at most.", noHist: "No tests yet.", confirmClear: "Delete all records?",
+    copied: "Copied!", liveNote: "Demo mode: add your Firebase config in index.html to enable Google/Facebook.", needFb: "Add the Firebase config first, or use the demo.",
+    signFail: "Sign in failed: ", guest: "Guest", friend: "Friend", langBtn: "বাংলা", ageDiff: "Age difference", sign: "Zodiac", tipHead: "💡 Love tip: ",
+    cardSaved: "Card saved!", shareTxt: (a,b,p)=>`${a} ❤ ${b}: our love is ${p}%! 💘`
+  }
+};
+const t = k => T[lang][k];
 
-function chipsHtml(s, f) {
-  return `<div class="chips">${f.chips.map(v => `<button type="button" class="chip" data-s="${s}" data-k="${f.k}" data-v="${v}">${v}</button>`).join("")}</div>`;
+/* ---------------- Options (bn / en) ---------------- */
+const OPT = {
+  blood: { bn: ["A+","A−","B+","B−","O+","O−","AB+","AB−"], en: ["A+","A−","B+","B−","O+","O−","AB+","AB−"] },
+  work: { bn: ["স্টুডেন্ট","চাকরিজীবী","ব্যবসায়ী","গৃহিণী","অন্যান্য"], en: ["Student","Employed","Business","Homemaker","Other"] },
+  love: { bn: ["সময় দেওয়া ⏳","উপহার 🎁","মিষ্টি কথা 💬","যত্ন নেওয়া 🤗","একসাথে ঘুরতে যাওয়া 🌄","সারপ্রাইজ দেওয়া 🎉","আলিঙ্গন বা ছোঁয়া 🫂","কাজে সাহায্য করা 🤝","মন দিয়ে কথা শোনা 👂","পাশে থাকা 🛡️"],
+          en: ["Quality time ⏳","Gifts 🎁","Kind words 💬","Caring 🤗","Going out together 🌄","Surprises 🎉","Hugs & touch 🫂","Helping out 🤝","Listening closely 👂","Being there 🛡️"] },
+  rel: { bn: ["বয়ফ্রেন্ড–গার্লফ্রেন্ড","স্বামী–স্ত্রী","বাবা","মা","ভাই","বোন","ছেলে","মেয়ে","বন্ধু","অন্যান্য"],
+         en: ["Boyfriend–Girlfriend","Husband–Wife","Father","Mother","Brother","Sister","Son","Daughter","Friend","Other"] },
+  dur: { bn: ["১ মাসের কম","১–৬ মাস","৬ মাস–১ বছর","১–৩ বছর","৩ বছরের বেশি","জন্ম থেকে"],
+         en: ["Under 1 month","1–6 months","6 months–1 year","1–3 years","Over 3 years","Since birth"] },
+  freq: { bn: ["প্রতিদিন","সপ্তাহে কয়েকবার","মাসে কয়েকবার","খুব কম"], en: ["Every day","A few times a week","A few times a month","Rarely"] }
+};
+const MONTHS = {
+  bn: ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"],
+  en: ["January","February","March","April","May","June","July","August","September","October","November","December"]
+};
+const ZODIAC = [
+  ["♑",{bn:"মকর",en:"Capricorn"},1,19],["♒",{bn:"কুম্ভ",en:"Aquarius"},2,18],["♓",{bn:"মীন",en:"Pisces"},3,20],["♈",{bn:"মেষ",en:"Aries"},4,19],
+  ["♉",{bn:"বৃষ",en:"Taurus"},5,20],["♊",{bn:"মিথুন",en:"Gemini"},6,20],["♋",{bn:"কর্কট",en:"Cancer"},7,22],["♌",{bn:"সিংহ",en:"Leo"},8,22],
+  ["♍",{bn:"কন্যা",en:"Virgo"},9,22],["♎",{bn:"তুলা",en:"Libra"},10,22],["♏",{bn:"বৃশ্চিক",en:"Scorpio"},11,21],["♐",{bn:"ধনু",en:"Sagittarius"},12,21]
+];
+function zodiac(d, m) {
+  for (const z of ZODIAC) if (m < z[2] || (m === z[2] && d <= z[3])) return z;
+  return ZODIAC[0];
 }
-function fieldHtml(s, f) {
-  let body;
-  if (f.type === "age") {
-    body = `<select data-s="${s}" data-k="age"><option value="">বয়স বেছে নিন</option>${Array.from({ length: 99 }, (_, i) => `<option value="${i + 1}">${bn(i + 1)} বছর</option>`).join("")}</select>`;
-  } else body = chipsHtml(s, f);
-  return `<div class="fld"><label>${f.label}</label>${body}</div>`;
+
+/* ---------------- Result texts ---------------- */
+const TITLES = [
+  [20, {bn:"নতুন শুরু 🌱", en:"Fresh start 🌱"}, {bn:"এখনো অনেক পথ বাকি। একটু বেশি সময় আর কথা বললে সব বদলে যাবে।", en:"Still a long road ahead. A little more time and talk will change everything."}],
+  [40, {bn:"ভালোবাসার বীজ 🌿", en:"Seed of love 🌿"}, {bn:"ভালোবাসার বীজ আছে, শুধু যত্ন দরকার।", en:"The seed of love is there, it just needs care."}],
+  [60, {bn:"প্রাণের বন্ধু 🤝", en:"Heart friends 🤝"}, {bn:"মাঝারি মিল। একসাথে সময় কাটালে এটা আরও বাড়বে।", en:"A decent match. Spending more time together will grow it."}],
+  [80, {bn:"মনের মানুষ 💞", en:"Close hearts 💞"}, {bn:"দারুণ বোঝাপড়া! আপনাদের মধ্যে সত্যিই টান আছে।", en:"Great understanding! There is a real bond between you."}],
+  [95, {bn:"সোলমেট ✨", en:"Soulmates ✨"}, {bn:"অসাধারণ জুটি! এমন ভালোবাসা খুব কম দেখা যায়।", en:"A wonderful pair! Love like this is rare."}],
+  [100, {bn:"পারফেক্ট ম্যাচ 💯", en:"Perfect match 💯"}, {bn:"আপনারা একে অপরের জন্যই তৈরি।", en:"You two were made for each other."}]
+];
+const resFor = p => TITLES.find(x => p <= x[0]);
+const BARS = [{bn:"বোঝাপড়া 🤝", en:"Understanding 🤝"},{bn:"বিশ্বাস 🔒", en:"Trust 🔒"},{bn:"মজার মুহূর্ত 😄", en:"Fun moments 😄"}];
+const TIPS = {
+  0: {bn:"আজ ওকে সময় দিন, ফোন সরিয়ে একসাথে বসে গল্প করুন।", en:"Give them your time today. Put the phone away and just talk."},
+  1: {bn:"ছোট একটা উপহার দিয়ে অবাক করে দিন।", en:"Surprise them with a small gift."},
+  2: {bn:"আজ একটা মিষ্টি কথা বলুন, যেটা অনেকদিন বলা হয়নি।", en:"Say one kind thing you haven't said in a long time."},
+  3: {bn:"ওর খোঁজখবর নিন, খেয়েছে কি না জিজ্ঞেস করুন।", en:"Check in on them. Ask if they have eaten."},
+  4: {bn:"একসাথে কোথাও ঘুরতে যাওয়ার পরিকল্পনা করুন।", en:"Plan a little trip together."},
+  5: {bn:"হঠাৎ একটা সারপ্রাইজের ব্যবস্থা করুন।", en:"Plan a sudden surprise."},
+  6: {bn:"একটা আন্তরিক আলিঙ্গন সব কথার চেয়ে বেশি বলে।", en:"A warm hug says more than words."},
+  7: {bn:"ওর একটা কাজ নিজে থেকে করে দিন।", en:"Take one task off their plate today."},
+  8: {bn:"আজ শুধু শুনুন, মাঝখানে থামাবেন না।", en:"Today, just listen. Don't interrupt."},
+  9: {bn:"ওকে জানিয়ে দিন যে আপনি সবসময় পাশে আছেন।", en:"Let them know you are always there."}
+};
+
+/* ---------------- Build form ---------------- */
+function chipsHtml(s, k, multi) {
+  return `<div class="chips">${OPT[k][lang].map((v, i) => `<button type="button" class="chip${isOn(s, k, i, multi) ? " on" : ""}" data-s="${s}" data-k="${k}" data-i="${i}" ${multi ? 'data-multi="1"' : ""}>${v}</button>`).join("")}</div>`;
 }
-function panelHtml(s, title, icon) {
+function isOn(s, k, i, multi) {
+  const v = S[s][k];
+  return multi ? Array.isArray(v) && v.includes(i) : v === i;
+}
+function dobHtml(s) {
+  const d = S[s].dd || "", m = S[s].mm || "", y = S[s].yy || "", now = new Date().getFullYear();
+  const days = Array.from({ length: 31 }, (_, i) => `<option value="${i + 1}"${+d === i + 1 ? " selected" : ""}>${num(i + 1)}</option>`).join("");
+  const months = MONTHS[lang].map((n, i) => `<option value="${i + 1}"${+m === i + 1 ? " selected" : ""}>${n}</option>`).join("");
+  const years = Array.from({ length: 100 }, (_, i) => now - i).map(v => `<option value="${v}"${+y === v ? " selected" : ""}>${num(v)}</option>`).join("");
+  return `<div class="dob">
+    <select data-s="${s}" data-dob="dd"><option value="">${t("day")}</option>${days}</select>
+    <select data-s="${s}" data-dob="mm"><option value="">${t("month")}</option>${months}</select>
+    <select data-s="${s}" data-dob="yy"><option value="">${t("year")}</option>${years}</select></div>`;
+}
+function ageHtml(s) {
+  const a = S[s].age || "";
+  const opts = Array.from({ length: 99 }, (_, i) => `<option value="${i + 1}"${+a === i + 1 ? " selected" : ""}>${num(i + 1)} ${t("yrs")}</option>`).join("");
+  return `<select data-s="${s}" data-age="1"><option value="">${t("ageSel")}</option>${opts}</select>`;
+}
+function panelHtml(s) {
   return `<section class="panel ${s}">
-    <h2>${title}</h2>
-    <div class="avatar" id="av-${s}">${icon}</div>
+    <h2>${s === "a" ? t("me") : t("partner")}</h2>
+    <div class="avatar" id="av-${s}">${S[s].photo ? `<img alt="" src="${S[s].photo}">` : (s === "a" ? "🌸" : "🌼")}</div>
     <div class="pick">
-      <button type="button" class="pbtn" data-open="g-${s}">🖼️ গ্যালারি</button>
-      <button type="button" class="pbtn" data-open="c-${s}">📷 ক্যামেরা</button>
+      <button type="button" class="pbtn" data-open="g-${s}">${t("gallery")}</button>
+      <button type="button" class="pbtn" data-open="c-${s}">${t("camera")}</button>
       <input type="file" accept="image/*" class="fin" id="g-${s}" data-photo="${s}">
       <input type="file" accept="image/*" capture="user" class="fin" id="c-${s}" data-photo="${s}">
     </div>
-    <div class="fld"><label>${s === "a" ? "আপনার নাম" : "পার্টনারের নাম"}</label><input class="txt" data-s="${s}" data-k="name" placeholder="নাম লিখুন" maxlength="30"></div>
-    ${FIELDS.map(f => fieldHtml(s, f)).join("")}
+    <div class="fld"><label>${s === "a" ? t("yourName") : t("partnerName")}</label><input class="txt" data-s="${s}" data-name="1" placeholder="${t("namePh")}" maxlength="30" value="${esc(S[s].name || "")}"></div>
+    <div class="fld"><label>${t("dob")}</label>${dobHtml(s)}</div>
+    <div class="fld"><label>${t("age")} <span class="hint">${t("ageOr")}</span></label>${ageHtml(s)}</div>
+    <div class="fld"><label>${t("blood")}</label>${chipsHtml(s, "blood")}</div>
+    <div class="fld"><label>${t("work")}</label>${chipsHtml(s, "work")}</div>
+    <div class="fld"><label>${t("loveLang")} <span class="hint">${t("loveHint")}</span></label>${chipsHtml(s, "love", true)}</div>
   </section>`;
 }
 function build() {
-  $("#panels").innerHTML = panelHtml("a", "আমি (Me)", "🌸") + panelHtml("b", "আমার পার্টনার", "🌼");
-  $("#shared").innerHTML = "<h2>দুজনের কথা</h2>" + SHARED.map(f => fieldHtml("x", f)).join("");
+  document.documentElement.lang = lang;
+  document.title = t("appName");
+  $("#panels").innerHTML = panelHtml("a") + panelHtml("b");
+  $("#shared").innerHTML = `<h2>${t("sharedTitle")} 💑</h2>
+    <div class="fld"><label>${t("rel")}</label>${chipsHtml("x", "rel")}</div>
+    <div class="fld"><label>${t("dur")}</label>${chipsHtml("x", "dur")}</div>
+    <div class="fld"><label>${t("freq")}</label>${chipsHtml("x", "freq")}</div>`;
+  $$("[data-t]").forEach(el => { el.textContent = t(el.dataset.t); });
+  $$("[data-lang-toggle]").forEach(el => { el.textContent = t("langBtn"); });
+  $("#liveNote").textContent = LIVE ? "" : t("liveNote");
+  if (user) $("#uName").textContent = user.name || t("guest");
+  drawHist();
 }
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-/* ---------- ইনপুট হ্যান্ডলিং ---------- */
+/* ---------------- Inputs ---------------- */
+function calcAge(s) {
+  const { dd, mm, yy } = S[s];
+  if (!dd || !mm || !yy) return;
+  const n = new Date();
+  let a = n.getFullYear() - +yy;
+  if (n.getMonth() + 1 < +mm || (n.getMonth() + 1 === +mm && n.getDate() < +dd)) a--;
+  if (a < 1) a = 1;
+  S[s].age = a;
+  const sel = document.querySelector(`select[data-s="${s}"][data-age]`);
+  if (sel) sel.value = a;
+}
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]");
   if (o) { const f = document.getElementById(o.dataset.open); if (f) { f.value = ""; f.click(); } return; }
   const c = e.target.closest(".chip");
   if (!c) return;
-  const { s, k, v } = c.dataset;
-  document.querySelectorAll(`.chip[data-s="${s}"][data-k="${k}"]`).forEach(x => x.classList.remove("on"));
-  c.classList.add("on");
-  S[s][k] = v;
+  const { s, k } = c.dataset, i = +c.dataset.i;
+  if (c.dataset.multi) {
+    const arr = S[s][k] || (S[s][k] = []);
+    const at = arr.indexOf(i);
+    if (at >= 0) { arr.splice(at, 1); c.classList.remove("on"); }
+    else if (arr.length >= LOVE_MAX) { toast(t("maxLove")); }
+    else { arr.push(i); c.classList.add("on"); }
+  } else {
+    $$(`.chip[data-s="${s}"][data-k="${k}"]`).forEach(x => x.classList.remove("on"));
+    c.classList.add("on");
+    S[s][k] = i;
+  }
 });
 document.addEventListener("input", e => {
-  const t = e.target;
-  if (t.dataset && t.dataset.k && !t.classList.contains("chip")) S[t.dataset.s][t.dataset.k] = t.value.trim();
+  const el = e.target;
+  if (el.dataset && el.dataset.name) S[el.dataset.s].name = el.value.trim();
 });
 document.addEventListener("change", e => {
-  const t = e.target;
-  if (t.dataset && t.dataset.photo && t.files[0]) pickPhoto(t.dataset.photo, t.files[0]);
-  if (t.tagName === "SELECT") S[t.dataset.s][t.dataset.k] = t.value;
+  const el = e.target;
+  if (el.dataset.photo && el.files[0]) return pickPhoto(el.dataset.photo, el.files[0]);
+  if (el.dataset.dob) { S[el.dataset.s][el.dataset.dob] = el.value; calcAge(el.dataset.s); }
+  if (el.dataset.age) S[el.dataset.s].age = el.value;
 });
-
 function pickPhoto(s, file) {
   const r = new FileReader();
   r.onload = () => {
@@ -231,47 +375,136 @@ function pickPhoto(s, file) {
   };
   r.readAsDataURL(file);
 }
-
-function toast(t) {
+function toast(m) {
   const d = document.createElement("div");
-  d.className = "toast"; d.textContent = t;
+  d.className = "toast"; d.textContent = m;
   document.body.appendChild(d);
   setTimeout(() => d.remove(), 2600);
 }
 
-/* ---------- ফলাফল ---------- */
-const MSGS = [
-  [20, "এখনো অনেক পথ বাকি। একটু বেশি সময় আর কথা বললে সব বদলে যাবে।"],
-  [40, "ভালোবাসার বীজ আছে, শুধু যত্ন দরকার।"],
-  [60, "মাঝারি মিল। একসাথে সময় কাটালে এটা আরও বাড়বে।"],
-  [80, "দারুণ বোঝাপড়া! আপনাদের মধ্যে সত্যিই টান আছে।"],
-  [95, "অসাধারণ জুটি! এমন ভালোবাসা খুব কম দেখা যায়।"],
-  [100, "পারফেক্ট ম্যাচ! আপনারা একে অপরের জন্যই তৈরি।"]
-];
-const msgFor = p => MSGS.find(m => p <= m[0])[1];
+/* ---------------- Language ---------------- */
+$$("[data-lang-toggle]").forEach(b => b.onclick = () => {
+  lang = lang === "bn" ? "en" : "bn";
+  localStorage.setItem("lt_lang", lang);
+  build();
+});
+
+/* ---------------- Run test ---------------- */
+function petals() {
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const set = ["🌸", "🌼", "💗", "🌷", "✨"];
+  for (let i = 0; i < 26; i++) {
+    const p = document.createElement("div");
+    p.className = "petal";
+    p.textContent = set[i % set.length];
+    p.style.left = Math.random() * 100 + "vw";
+    p.style.fontSize = 16 + Math.random() * 18 + "px";
+    p.style.animationDuration = 3 + Math.random() * 3 + "s";
+    p.style.animationDelay = Math.random() * 1.2 + "s";
+    document.body.appendChild(p);
+    setTimeout(() => p.remove(), 7500);
+  }
+}
 const avHtml = (ph, ic) => ph ? `<img alt="" src="${ph}">` : ic;
+const optText = (k, i) => i == null ? "" : OPT[k][lang][i];
 
 function runTest() {
-  if (!S.a.name || !S.b.name) return toast("দুজনেরই নাম দিন।");
-  if (!S.x.rel) return toast("দুজনের সম্পর্ক বেছে নিন।");
+  if (!S.a.name || !S.b.name) return toast(t("needNames"));
+  if (S.x.rel == null) return toast(t("needRel"));
+  if ((S.a.love || []).length < LOVE_MIN || (S.b.love || []).length < LOVE_MIN) return toast(t("needLove"));
   const p = Math.floor(Math.random() * 100) + 1;
-  last = { id: Date.now(), p, an: S.a.name, bn: S.b.name, rel: S.x.rel, ap: S.a.photo || "", bp: S.b.photo || "" };
-  $("#rA").innerHTML = avHtml(last.ap, "🌸");
-  $("#rB").innerHTML = avHtml(last.bp, "🌼");
-  $("#rNames").textContent = `${last.an} ❤ ${last.bn} (${last.rel})`;
-  $("#rMsg").textContent = msgFor(p);
-  $("#res").hidden = false;
-  const t0 = performance.now();
-  (function tick(t) {
-    const k = Math.min((t - t0) / 1600, 1), v = Math.round(p * (1 - Math.pow(1 - k, 3)));
-    $("#ring").style.setProperty("--p", v);
-    $("#pct").textContent = bn(v) + "%";
-    if (k < 1) requestAnimationFrame(tick);
-  })(t0);
+  const parts = BARS.map(() => Math.floor(Math.random() * 61) + 40);
+  const common = (S.a.love || []).filter(i => (S.b.love || []).includes(i));
+  const tipIdx = common.length ? common[0] : S.a.love[0];
+  last = { id: Date.now(), p, parts, tipIdx, an: S.a.name, bn: S.b.name, rel: S.x.rel,
+           ap: S.a.photo || "", bp: S.b.photo || "",
+           aAge: S.a.age || "", bAge: S.b.age || "",
+           aDob: S.a.dd && S.a.mm ? [S.a.dd, S.a.mm] : null, bDob: S.b.dd && S.b.mm ? [S.b.dd, S.b.mm] : null };
+  showResult(last, true);
   const h = loadHist(); h.unshift(last); saveHist(h.slice(0, 30)); drawHist();
 }
+function showResult(x, animate) {
+  const r = resFor(x.p);
+  $("#rA").innerHTML = avHtml(x.ap, "🌸");
+  $("#rB").innerHTML = avHtml(x.bp, "🌼");
+  $("#rNames").textContent = `${x.an} ❤ ${x.bn} (${OPT.rel[lang][x.rel]})`;
+  $("#rTitle").textContent = r[1][lang];
+  $("#rMsg").textContent = r[2][lang];
+  let extra = "";
+  if (x.aAge && x.bAge) extra += `${t("ageDiff")}: ${num(Math.abs(x.aAge - x.bAge))} ${t("yrs")}`;
+  if (x.aDob && x.bDob) {
+    const za = zodiac(+x.aDob[0], +x.aDob[1]), zb = zodiac(+x.bDob[0], +x.bDob[1]);
+    extra += (extra ? " · " : "") + `${t("sign")}: ${za[0]} ${za[1][lang]} & ${zb[0]} ${zb[1][lang]}`;
+  }
+  $("#bars").innerHTML = (extra ? `<div class="bar" style="text-align:center;opacity:.8">${extra}</div>` : "") +
+    BARS.map((b, i) => `<div class="bar"><span><b>${b[lang]}</b><b>${num(x.parts[i])}%</b></span><i><b data-w="${x.parts[i]}"></b></i></div>`).join("");
+  $("#tip").textContent = t("tipHead") + TIPS[x.tipIdx][lang];
+  $("#res").hidden = false;
+  const t0 = performance.now();
+  (function tick(now) {
+    const k = animate ? Math.min((now - t0) / 1600, 1) : 1, v = Math.round(x.p * (1 - Math.pow(1 - k, 3)));
+    $("#ring").style.setProperty("--p", v);
+    $("#pct").textContent = num(v) + "%";
+    if (k < 1) requestAnimationFrame(tick);
+  })(t0);
+  requestAnimationFrame(() => $$("#bars [data-w]").forEach(el => { el.style.width = el.dataset.w + "%"; }));
+  if (animate) petals();
+}
 
-/* ---------- রেকর্ড (এই ডিভাইসে সেভ হয়) ---------- */
+/* ---------------- Share & card ---------------- */
+function drawCard() {
+  const W = 900, H = 1100, cv = document.createElement("canvas");
+  cv.width = W; cv.height = H;
+  const c = cv.getContext("2d"), x = last, r = resFor(x.p);
+  const g = c.createLinearGradient(0, 0, W, H);
+  g.addColorStop(0, "#ffe3ea"); g.addColorStop(1, "#fff0d6");
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  c.textAlign = "center"; c.fillStyle = "#2b1030";
+  c.font = "700 54px 'Hind Siliguri',sans-serif";
+  c.fillText(t("appName") + " 💘", W / 2, 110);
+  const load = src => new Promise(res => { if (!src) return res(null); const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = src; });
+  return Promise.all([load(x.ap), load(x.bp)]).then(([ia, ib]) => {
+    const face = (im, cx, ic) => {
+      c.save(); c.beginPath(); c.arc(cx, 330, 120, 0, Math.PI * 2); c.closePath(); c.clip();
+      c.fillStyle = "#fff"; c.fillRect(cx - 120, 210, 240, 240);
+      if (im) c.drawImage(im, cx - 120, 210, 240, 240);
+      else { c.font = "110px sans-serif"; c.fillStyle = "#2b1030"; c.fillText(ic, cx, 365); }
+      c.restore();
+      c.lineWidth = 8; c.strokeStyle = "#e8456b"; c.beginPath(); c.arc(cx, 330, 120, 0, Math.PI * 2); c.stroke();
+    };
+    face(ia, 210, "🌸"); face(ib, 690, "🌼");
+    c.fillStyle = "#e8456b"; c.font = "700 150px 'Tiro Bangla',serif";
+    c.fillText(num(x.p) + "%", W / 2, 380);
+    c.fillStyle = "#2b1030"; c.font = "600 46px 'Hind Siliguri',sans-serif";
+    c.fillText(`${x.an} ❤ ${x.bn}`, W / 2, 570);
+    c.font = "500 40px 'Hind Siliguri',sans-serif";
+    c.fillText(r[1][lang], W / 2, 650);
+    c.font = "400 32px 'Hind Siliguri',sans-serif"; c.fillStyle = "#5b3a60";
+    const words = r[2][lang].split(" "); let line = "", y = 730;
+    words.forEach(w => { const tt = line + w + " "; if (c.measureText(tt).width > 760) { c.fillText(line, W / 2, y); line = w + " "; y += 44; } else line = tt; });
+    c.fillText(line, W / 2, y);
+    c.font = "400 26px 'Hind Siliguri',sans-serif"; c.fillStyle = "#8a6a90";
+    c.fillText(t("funNote"), W / 2, H - 60);
+    return cv;
+  });
+}
+$("#cardBtn").onclick = () => drawCard().then(cv => {
+  const a = document.createElement("a");
+  a.download = "love-test.png"; a.href = cv.toDataURL("image/png");
+  document.body.appendChild(a); a.click(); a.remove();
+  toast(t("cardSaved"));
+});
+$("#shBtn").onclick = async () => {
+  const txt = T[lang].shareTxt(last.an, last.bn, num(last.p));
+  try {
+    if (navigator.share) await navigator.share({ text: txt, url: location.href });
+    else { await navigator.clipboard.writeText(txt + " " + location.href); toast(t("copied")); }
+  } catch (e) {}
+};
+$("#goBtn").onclick = runTest;
+$("#clBtn").onclick = () => { $("#res").hidden = true; };
+
+/* ---------------- History (saved on this device) ---------------- */
 const hk = () => "lt_hist_" + (user ? user.id : "guest");
 function loadHist() { try { return JSON.parse(localStorage.getItem(hk())) || []; } catch (e) { return []; } }
 function saveHist(h) {
@@ -281,61 +514,49 @@ function saveHist(h) {
 function drawHist() {
   const h = loadHist();
   $("#clrBtn").hidden = !h.length;
-  $("#hist").innerHTML = h.length ? h.map(x => `<div class="row">
+  $("#hist").innerHTML = h.length ? h.map(x => `<div class="row" data-show="${x.id}">
     <div class="th"><i>${avHtml(x.ap, "🌸")}</i><i>${avHtml(x.bp, "🌼")}</i></div>
-    <div class="tx"><b>${esc(x.an)} ❤ ${esc(x.bn)}</b><small>${esc(x.rel)} · ${new Date(x.id).toLocaleString("bn-BD")}</small></div>
-    <strong>${bn(x.p)}%</strong>
-    <button class="lnk" data-del="${x.id}" aria-label="মুছুন">✕</button></div>`).join("")
-    : '<div class="empty">এখনো কোনো টেস্ট করা হয়নি।</div>';
+    <div class="tx"><b>${esc(x.an)} ❤ ${esc(x.bn)}</b><small>${esc(OPT.rel[lang][x.rel] || "")} · ${new Date(x.id).toLocaleString(lang === "bn" ? "bn-BD" : "en-GB")}</small></div>
+    <strong>${num(x.p)}%</strong>
+    <button class="lnk" data-del="${x.id}" aria-label="delete">✕</button></div>`).join("")
+    : `<div class="empty">${t("noHist")}</div>`;
 }
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 $("#hist").addEventListener("click", e => {
   const d = e.target.closest("[data-del]");
-  if (d) { saveHist(loadHist().filter(x => String(x.id) !== d.dataset.del)); drawHist(); }
+  if (d) { saveHist(loadHist().filter(x => String(x.id) !== d.dataset.del)); return drawHist(); }
+  const r = e.target.closest("[data-show]");
+  if (r) { const x = loadHist().find(v => String(v.id) === r.dataset.show); if (x) { last = x; showResult(x, false); } }
 });
-$("#clrBtn").onclick = () => { if (confirm("সব রেকর্ড মুছে ফেলবেন?")) { saveHist([]); drawHist(); } };
+$("#clrBtn").onclick = () => { if (confirm(t("confirmClear"))) { saveHist([]); drawHist(); } };
 
-/* ---------- বাটন ---------- */
-$("#goBtn").onclick = runTest;
-$("#clBtn").onclick = () => { $("#res").hidden = true; };
-$("#shBtn").onclick = async () => {
-  const txt = `${last.an} ❤ ${last.bn}: আমাদের ভালোবাসার পরিমাণ ${bn(last.p)}%! 💘`;
-  try {
-    if (navigator.share) await navigator.share({ text: txt, url: location.href });
-    else { await navigator.clipboard.writeText(txt + " " + location.href); toast("কপি হয়েছে!"); }
-  } catch (e) {}
-};
-
-/* ---------- সাইন ইন ---------- */
+/* ---------------- Sign in ---------------- */
 function setUser(u) {
   user = u;
   $("#login").hidden = !!u;
   $("#app").hidden = !u;
   if (u) {
-    $("#uName").textContent = u.name || "বন্ধু";
+    $("#uName").textContent = u.name || t("guest");
     const im = $("#uPhoto"); im.hidden = !u.photo; if (u.photo) im.src = u.photo;
     drawHist();
   }
 }
-function social(p) {
-  if (!LIVE) return toast("আগে Firebase কনফিগ বসান, অথবা ডেমো ব্যবহার করুন।");
-  auth.signInWithPopup(p).catch(err => toast("সাইন ইন হয়নি: " + err.code));
+function social(mk) {
+  if (!LIVE) return toast(t("needFb"));
+  auth.signInWithPopup(mk()).catch(err => toast(t("signFail") + err.code));
 }
-$("#gBtn").onclick = () => social(LIVE && new firebase.auth.GoogleAuthProvider());
-$("#fBtn").onclick = () => social(LIVE && new firebase.auth.FacebookAuthProvider());
-$("#dBtn").onclick = () => setUser({ id: "demo", name: "অতিথি" });
+$("#gBtn").onclick = () => social(() => new firebase.auth.GoogleAuthProvider());
+$("#fBtn").onclick = () => social(() => new firebase.auth.FacebookAuthProvider());
+$("#dBtn").onclick = () => setUser({ id: "demo", name: t("guest") });
 $("#outBtn").onclick = () => { if (LIVE) auth.signOut(); setUser(null); };
 
 build();
 if (LIVE) {
   firebase.initializeApp(CFG);
   auth = firebase.auth();
-  auth.onAuthStateChanged(u => { setUser(u ? { id: u.uid, name: u.displayName, photo: u.photoURL } : null); });
+  auth.onAuthStateChanged(u => setUser(u ? { id: u.uid, name: u.displayName, photo: u.photoURL } : null));
 } else {
-  $("#liveNote").textContent = "ডেমো মোড: Google/Facebook চালু করতে index.html এর Firebase কনফিগ বসান।";
   setUser(null);
 }
-$("#login").hidden = !!user;
 </script>
 </body>
 </html>
